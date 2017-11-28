@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace TesteDesingPatternsChainOfResponsability {
     public class Orcamento {
 
@@ -8,6 +10,12 @@ namespace TesteDesingPatternsChainOfResponsability {
         public Orcamento(double Valor)
         {
             this.Valor = Valor;
+            itens = new List<Item>();
+        }
+
+        public void AddItem(Item item)
+        {
+            this.itens.Add(item);
         }
     }
 }
