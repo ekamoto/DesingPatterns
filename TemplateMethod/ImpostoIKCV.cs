@@ -1,19 +1,24 @@
 namespace TesteDesingPatternsTemplateMethod
 {
-    public class ImpostoIKCV : Imposto
+    public class ImpostoIKCV : TemplateMethodImposto
     {
         public ImpostoIKCV()
         {
 
         }
 
-        public double Calcular(Orcamento orcamento)
+        public override bool CondicaoMaximaTaxacao(Orcamento orcamento)
         {
-            if(orcamento.itens.Count > 5)
-            {
-                return orcamento.Valor * 5;
-            }
+            return orcamento.itens.Count > 5;
+        }
 
+        public override double MaximaTaxacao(Orcamento orcamento)
+        {
+            return orcamento.Valor * 5;
+        }
+
+        public override double MinimaTaxacao(Orcamento orcamento)
+        {
             return orcamento.Valor * 7;
         }
     }
