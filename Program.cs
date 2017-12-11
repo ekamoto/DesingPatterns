@@ -8,7 +8,33 @@ namespace TesteDesingPatterns
         {
 
             //TesteStrategy();
-            TesteChainOfResponsability();
+            //TesteChainOfResponsability();
+            TesteTemplateMethod();
+        }
+
+        private static void TesteTemplateMethod()
+        {
+            Console.WriteLine("Template Method");
+            TesteDesingPatternsTemplateMethod.Orcamento orcamento = new TesteDesingPatternsTemplateMethod.Orcamento(500);
+            orcamento.AddItem(new TesteDesingPatternsTemplateMethod.Item("Produto 1", 200));
+            orcamento.AddItem(new TesteDesingPatternsTemplateMethod.Item("Produto 2", 250));
+            orcamento.AddItem(new TesteDesingPatternsTemplateMethod.Item("Produto 3", 50));
+            orcamento.AddItem(new TesteDesingPatternsTemplateMethod.Item("Produto 4", 2.50));
+            orcamento.AddItem(new TesteDesingPatternsTemplateMethod.Item("Produto 5", 6.90));
+            orcamento.AddItem(new TesteDesingPatternsTemplateMethod.Item("Produto 6", 600));
+
+            TesteDesingPatternsTemplateMethod.CalculaImposto calcularoImposto = new TesteDesingPatternsTemplateMethod.CalculaImposto();
+
+            TesteDesingPatternsTemplateMethod.ImpostoIKCV impostoIKCV = new TesteDesingPatternsTemplateMethod.ImpostoIKCV();
+            TesteDesingPatternsTemplateMethod.ImpostoICPP impostoICPP = new TesteDesingPatternsTemplateMethod.ImpostoICPP();
+
+            var valorImpostoIKCV = calcularoImposto.Calcula(orcamento, impostoIKCV);
+            var valorImpostoICPP = calcularoImposto.Calcula(orcamento, impostoICPP);
+
+            Console.WriteLine("valorImpostoIKCV:" + valorImpostoIKCV);
+            Console.WriteLine("valorImpostoICPP:" + valorImpostoICPP);
+
+            Console.WriteLine("Fim Teste Template Method");
         }
 
         private static void TesteChainOfResponsability()
