@@ -9,8 +9,11 @@ namespace TesteDesingPatterns
 
             //TesteStrategy();
             //TesteChainOfResponsability();
-            TesteTemplateMethod();
+            //TesteTemplateMethod();
+            TesteDesingPatternsDecorator();
         }
+
+       
 
         private static void TesteTemplateMethod()
         {
@@ -78,6 +81,20 @@ namespace TesteDesingPatterns
 
             Console.WriteLine("Valor Imposto: " + valor);
             Console.WriteLine("Fim Teste Strategy");
+        }
+
+        private static void TesteDesingPatternsDecorator() {
+
+            Console.WriteLine("Iniciando Teste Decorator");
+
+            TesteDesingPatternsDecorator.ImpostoINSS impostoINSS = new TesteDesingPatternsDecorator.ImpostoINSS(new TesteDesingPatternsDecorator.ImpostoICCC());
+            TesteDesingPatternsDecorator.Orcamento orcamento = new TesteDesingPatternsDecorator.Orcamento(500);
+
+            double valor = impostoINSS.Calcular(orcamento);
+
+            Console.WriteLine("Valor imposto INSS Decorator:" + valor);
+
+            Console.WriteLine("Fim Teste Decorator");
         }
     }
 }
