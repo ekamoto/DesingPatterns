@@ -87,7 +87,9 @@ namespace TesteDesingPatterns
 
             Console.WriteLine("Iniciando Teste Decorator");
 
-            TesteDesingPatternsDecorator.ImpostoINSS impostoINSS = new TesteDesingPatternsDecorator.ImpostoINSS(new TesteDesingPatternsDecorator.ImpostoICCC());
+            TesteDesingPatternsDecorator.ImpostoINSS impostoINSS = new TesteDesingPatternsDecorator.ImpostoINSS(
+                new TesteDesingPatternsDecorator.ImpostoICCC(
+                    new TesteDesingPatternsDecorator.ImpostoMuitoAlto()));
             TesteDesingPatternsDecorator.Orcamento orcamento = new TesteDesingPatternsDecorator.Orcamento(500);
 
             double valor = impostoINSS.Calcular(orcamento);
