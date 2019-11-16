@@ -18,6 +18,15 @@ namespace TesteDesingPatterns
             TesteDesingPatternsState.Orcamento orcamento = new TesteDesingPatternsState.Orcamento(500);
 
             orcamento.AplicaDescontoExtra();
+            Console.WriteLine(orcamento.Valor);
+
+            orcamento.Aprovar();
+            orcamento.AplicaDescontoExtra();
+
+            Console.WriteLine(orcamento.Valor);
+
+            orcamento.Finaliza();
+            orcamento.AplicaDescontoExtra();
 
             Console.WriteLine(orcamento.Valor);
         }
