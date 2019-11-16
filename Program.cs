@@ -6,14 +6,21 @@ namespace TesteDesingPatterns
     {
         static void Main(string[] args)
         {
-
             //TesteStrategy();
             //TesteChainOfResponsability();
             //TesteTemplateMethod();
-            TesteDesingPatternsDecorator();
+            //TesteDesingPatternsDecorator();
+            TesteDesingPatternsState();
         }
 
-       
+        private static void TesteDesingPatternsState()
+        {
+            TesteDesingPatternsState.Orcamento orcamento = new TesteDesingPatternsState.Orcamento(500);
+
+            orcamento.AplicaDescontoExtra();
+
+            Console.WriteLine(orcamento.Valor);
+        }
 
         private static void TesteTemplateMethod()
         {
