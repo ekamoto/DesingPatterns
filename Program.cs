@@ -10,7 +10,28 @@ namespace TesteDesingPatterns
             //TesteChainOfResponsability();
             //TesteTemplateMethod();
             //TesteDesingPatternsDecorator();
-            TesteDesingPatternsState();
+            //TesteDesingPatternsState();
+            TesteContTesteDesingPatternsStateaPositivaNegativa();
+        }
+
+        private static void TesteContTesteDesingPatternsStateaPositivaNegativa()
+        {
+            var conta = new TesteDesingPatternsState.ContaBancaria(300);
+            
+            Console.WriteLine(conta.Saldo);
+            Console.WriteLine(conta.ObterEstadoConta());
+
+            conta.Deposito(100);
+            Console.WriteLine(conta.Saldo);
+            Console.WriteLine(conta.ObterEstadoConta());
+
+            conta.Saque(500);
+            Console.WriteLine(conta.Saldo);
+            Console.WriteLine(conta.ObterEstadoConta());
+
+            conta.Deposito(1000);
+            Console.WriteLine(conta.Saldo);
+            Console.WriteLine(conta.ObterEstadoConta());
         }
 
         private static void TesteDesingPatternsState()
