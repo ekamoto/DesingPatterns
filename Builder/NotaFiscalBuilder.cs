@@ -23,7 +23,14 @@ namespace TesteDesingPatternsBuilder
 
         public NotaFiscal Constroi() 
         {
-            return new NotaFiscal(RazaoSocial, Cnpj, Data, valorBruto, Impostos, todosItens, Observacoes);
+            var nf = new NotaFiscal(RazaoSocial, Cnpj, Data, valorBruto, Impostos, todosItens, Observacoes);
+            
+            EnviaPorEmail(nf);
+            SalvaNoBanco(nf);
+            EnviaPorEmail(nf);
+            Imprime(nf);
+
+            return nf;
         }
 
         public NotaFiscalBuilder ParaEmpresa(String razaoSocial) 
@@ -57,6 +64,26 @@ namespace TesteDesingPatternsBuilder
         {
             Data = data;
             return this;
+        }
+
+        private void EnviaPorEmail(NotaFiscal notaFiscal) 
+        {
+            Console.WriteLine("enviando por e-mail");
+        }
+
+        private void SalvaNoBanco(NotaFiscal notaFiscal) 
+        {
+            Console.WriteLine("salvando no banco");
+        }
+
+        private void EnviaPorSms(NotaFiscal notaFiscal) 
+        {
+            Console.WriteLine("enviando por sms");
+        }
+
+        private void Imprime(NotaFiscal notaFiscal) 
+        {
+            Console.WriteLine("imprimindo notaFiscal");
         }
     }
 }
