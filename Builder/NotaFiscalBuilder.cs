@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TesteDesingPatternsBuilder
 {
-    public class NotaFiscalBuilder 
+    public class NotaFiscalBuilder: INotafiscalBuilder
     {
         public String RazaoSocial { get; private set; }
         public String Cnpj { get; private set; }

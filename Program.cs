@@ -17,15 +17,27 @@ namespace TesteDesingPatterns
 
         private static void TesteDesingPatternsBuilder()
         {
+            TesteDesingPatternsBuilder.ItemDaNota itemDaNotaBuilder1 = new TesteDesingPatternsBuilder.ItemDaNotaBuilder()
+            .ComDescricao("Descrição teste 1")
+            .ComValor(1200).Constroi();
+
+            TesteDesingPatternsBuilder.ItemDaNota itemDaNotaBuilder2 = new TesteDesingPatternsBuilder.ItemDaNotaBuilder()
+            .ComDescricao("Descrição teste 2")
+            .ComValor(350).Constroi();
+
+            TesteDesingPatternsBuilder.ItemDaNota itemDaNotaBuilder3 = new TesteDesingPatternsBuilder.ItemDaNotaBuilder()
+            .ComDescricao("Descrição teste 3")
+            .ComValor(670).Constroi();
+
             TesteDesingPatternsBuilder.NotaFiscal notaFiscalBuilder = new TesteDesingPatternsBuilder.NotaFiscalBuilder().ParaEmpresa("Shindi")
                                     .ComCnpj("123.456.789/0001-10")
-                                    .ComItem(new TesteDesingPatternsBuilder.ItemDaNota("item 1", 100.0))
-                                    .ComItem(new TesteDesingPatternsBuilder.ItemDaNota("item 2", 200.0))
-                                    .ComItem(new TesteDesingPatternsBuilder.ItemDaNota("item 3", 300.0))
+                                    .ComItem(itemDaNotaBuilder1)
+                                    .ComItem(itemDaNotaBuilder2)
+                                    .ComItem(itemDaNotaBuilder3)
                                     .ComObservacoes("entregar nf pessoalmente")
                                     .NaDataAtual()
                                     .Constroi();
-                                    
+
             Console.WriteLine(notaFiscalBuilder.RazaoSocial);
             Console.WriteLine(notaFiscalBuilder.Cnpj);
 
