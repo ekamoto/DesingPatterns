@@ -10,5 +10,6 @@ namespace TesteDesingPatternsObserver
         NotaFiscalObserver ComItem(ItemDaNota item);
         NotaFiscalObserver ComObservacoes(string obs);
         NotaFiscalObserver NaDataAtual(DateTime data);
+        void AdicionaAcao(AcaoAposGerarNota acao);
     }
 }

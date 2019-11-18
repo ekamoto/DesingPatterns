@@ -16,6 +16,8 @@ namespace TesteDesingPatternsObserver
 
         private IList<ItemDaNota> todosItens = new List<ItemDaNota>();
 
+        private IList<AcaoAposGerarNota> acoesAposGerarNota = new List<AcaoAposGerarNota>();
+
         public NotaFiscalObserver()
         {
             Data = DateTime.Now;
@@ -25,10 +27,10 @@ namespace TesteDesingPatternsObserver
         {
             var nf = new NotaFiscal(RazaoSocial, Cnpj, Data, valorBruto, Impostos, todosItens, Observacoes);
             
-            EnviaPorEmail(nf);
-            SalvaNoBanco(nf);
-            EnviaPorEmail(nf);
-            Imprime(nf);
+            foreach(var acao in acoesAposGerarNota)
+            {
+                acao.Executa(nf);
+            }
 
             return nf;
         }
@@ -66,24 +68,9 @@ namespace TesteDesingPatternsObserver
             return this;
         }
 
-        private void EnviaPorEmail(NotaFiscal notaFiscal) 
+        public void AdicionaAcao(AcaoAposGerarNota acao)
         {
-            Console.WriteLine("enviando por e-mail");
-        }
-
-        private void SalvaNoBanco(NotaFiscal notaFiscal) 
-        {
-            Console.WriteLine("salvando no banco");
-        }
-
-        private void EnviaPorSms(NotaFiscal notaFiscal) 
-        {
-            Console.WriteLine("enviando por sms");
-        }
-
-        private void Imprime(NotaFiscal notaFiscal) 
-        {
-            Console.WriteLine("imprimindo notaFiscal");
+            acoesAposGerarNota.Add(acao);
         }
     }
 }

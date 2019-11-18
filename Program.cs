@@ -12,7 +12,43 @@ namespace TesteDesingPatterns
             //TesteDesingPatternsDecorator();
             //TesteDesingPatternsState();
             //TesteDesingPatternsStateContaPositivaNegativa();
-            TesteDesingPatternsBuilder();
+            //TesteDesingPatternsBuilder();
+            TesteDesingPatternsObserver();
+        }
+
+        private static void TesteDesingPatternsObserver()
+        {
+
+            TesteDesingPatternsObserver.NotaFiscalObserver nfBuilder = new TesteDesingPatternsObserver.NotaFiscalObserver();
+
+            // Adicionar as classes que precisam ser notificadas
+            nfBuilder.AdicionaAcao(new TesteDesingPatternsObserver.EnviadorDeEmail());
+            nfBuilder.AdicionaAcao(new TesteDesingPatternsObserver.NotaFiscalDao());
+            nfBuilder.AdicionaAcao(new TesteDesingPatternsObserver.EnviadorDeSms());
+            nfBuilder.AdicionaAcao(new TesteDesingPatternsObserver.Impressora());
+            
+            TesteDesingPatternsObserver.ItemDaNota itemDaNotaBuilder1 = new TesteDesingPatternsObserver.ItemDaNotaObserver()
+            .ComDescricao("Descrição teste 1")
+            .ComValor(1200).Constroi();
+
+            TesteDesingPatternsObserver.NotaFiscal notaFiscal= nfBuilder.ParaEmpresa("Shindi")
+            .ComCnpj("123.456.789/0001-10")
+            .ComItem(itemDaNotaBuilder1)
+            .ComObservacoes("entregar nf pessoalmente")
+            .NaDataAtual(DateTime.Now)
+            .Constroi();
+
+            Console.WriteLine(nfBuilder.RazaoSocial);
+            Console.WriteLine(nfBuilder.Cnpj);
+
+            foreach(var item in notaFiscal.Itens)
+            {
+                Console.WriteLine(item.Valor);    
+            }
+
+            Console.WriteLine(notaFiscal.Observacoes);
+            Console.WriteLine(notaFiscal.DataDeEmissao);
+
         }
 
         private static void TesteDesingPatternsBuilder()
