@@ -9,7 +9,7 @@ namespace TesteDesingPatternsBuilder
         NotaFiscalBuilder ComCnpj(String cnpj);
         NotaFiscalBuilder ComItem(ItemDaNota item);
         NotaFiscalBuilder ComObservacoes(string obs);
-        NotaFiscalBuilder NaDataAtual();
+        NotaFiscalBuilder NaDataAtual(DateTime data);
         
     }
 }

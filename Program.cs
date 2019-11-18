@@ -35,7 +35,7 @@ namespace TesteDesingPatterns
                                     .ComItem(itemDaNotaBuilder2)
                                     .ComItem(itemDaNotaBuilder3)
                                     .ComObservacoes("entregar nf pessoalmente")
-                                    .NaDataAtual()
+                                    .NaDataAtual(DateTime.Now)
                                     .Constroi();
 
             Console.WriteLine(notaFiscalBuilder.RazaoSocial);
@@ -48,6 +48,26 @@ namespace TesteDesingPatterns
 
             Console.WriteLine(notaFiscalBuilder.Observacoes);
             Console.WriteLine(notaFiscalBuilder.DataDeEmissao);
+
+            // Segunda construção sem invocar NaDataAtual
+            TesteDesingPatternsBuilder.NotaFiscal notaFiscalBuilder2 = new TesteDesingPatternsBuilder.NotaFiscalBuilder().ParaEmpresa("Shindi")
+                                    .ComCnpj("123.456.789/0001-10")
+                                    .ComItem(itemDaNotaBuilder1)
+                                    .ComItem(itemDaNotaBuilder2)
+                                    .ComItem(itemDaNotaBuilder3)
+                                    .ComObservacoes("entregar nf pessoalmente")
+                                    .Constroi();
+
+            Console.WriteLine(notaFiscalBuilder2.RazaoSocial);
+            Console.WriteLine(notaFiscalBuilder2.Cnpj);
+
+            foreach(var item in notaFiscalBuilder2.Itens)
+            {
+                Console.WriteLine(item.Valor);    
+            }
+
+            Console.WriteLine(notaFiscalBuilder2.Observacoes);
+            Console.WriteLine(notaFiscalBuilder2.DataDeEmissao);
         }
 
         private static void TesteDesingPatternsStateContaPositivaNegativa()

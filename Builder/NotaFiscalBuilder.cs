@@ -16,6 +16,11 @@ namespace TesteDesingPatternsBuilder
 
         private IList<ItemDaNota> todosItens = new List<ItemDaNota>();
 
+        public NotaFiscalBuilder()
+        {
+            Data = DateTime.Now;
+        }
+
         public NotaFiscal Constroi() 
         {
             return new NotaFiscal(RazaoSocial, Cnpj, Data, valorBruto, Impostos, todosItens, Observacoes);
@@ -48,9 +53,9 @@ namespace TesteDesingPatternsBuilder
             return this;
         }
     
-        public NotaFiscalBuilder NaDataAtual()
+        public NotaFiscalBuilder NaDataAtual(DateTime data)
         {
-            Data = DateTime.Now;
+            Data = data;
             return this;
         }
     }
