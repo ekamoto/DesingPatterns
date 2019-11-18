@@ -11,10 +11,34 @@ namespace TesteDesingPatterns
             //TesteTemplateMethod();
             //TesteDesingPatternsDecorator();
             //TesteDesingPatternsState();
-            TesteContTesteDesingPatternsStateaPositivaNegativa();
+            //TesteDesingPatternsStateContaPositivaNegativa();
+            TesteDesingPatternsBuilder();
         }
 
-        private static void TesteContTesteDesingPatternsStateaPositivaNegativa()
+        private static void TesteDesingPatternsBuilder()
+        {
+            TesteDesingPatternsBuilder.NotaFiscal notaFiscalBuilder = new TesteDesingPatternsBuilder.NotaFiscalBuilder().ParaEmpresa("Shindi")
+                                    .ComCnpj("123.456.789/0001-10")
+                                    .ComItem(new TesteDesingPatternsBuilder.ItemDaNota("item 1", 100.0))
+                                    .ComItem(new TesteDesingPatternsBuilder.ItemDaNota("item 2", 200.0))
+                                    .ComItem(new TesteDesingPatternsBuilder.ItemDaNota("item 3", 300.0))
+                                    .ComObservacoes("entregar nf pessoalmente")
+                                    .NaDataAtual()
+                                    .Constroi();
+                                    
+            Console.WriteLine(notaFiscalBuilder.RazaoSocial);
+            Console.WriteLine(notaFiscalBuilder.Cnpj);
+
+            foreach(var item in notaFiscalBuilder.Itens)
+            {
+                Console.WriteLine(item.Valor);    
+            }
+
+            Console.WriteLine(notaFiscalBuilder.Observacoes);
+            Console.WriteLine(notaFiscalBuilder.DataDeEmissao);
+        }
+
+        private static void TesteDesingPatternsStateContaPositivaNegativa()
         {
             var conta = new TesteDesingPatternsState.ContaBancaria(300);
             
