@@ -8,13 +8,14 @@ namespace TesteDesingPatterns
         static void Main(string[] args)
         {
             //TesteStrategy();
-            //TesteChainOfResponsability();
+            TesteChainOfResponsability();
             //TesteTemplateMethod();
             //TesteDesingPatternsDecorator();
             //TesteDesingPatternsState();
             //TesteDesingPatternsStateContaPositivaNegativa();
             //TesteDesingPatternsBuilder();
-            TesteDesingPatternsObserver();
+            //TesteDesingPatternsObserver();
+            Console.ReadLine();
         }
 
         private static void TesteDesingPatternsObserver()
@@ -182,15 +183,20 @@ namespace TesteDesingPatterns
             orcamento.AddItem(new TesteDesingPatternsChainOfResponsability.Item("Produto 4", 2.50));
             orcamento.AddItem(new TesteDesingPatternsChainOfResponsability.Item("Produto 5", 6.90));
             orcamento.AddItem(new TesteDesingPatternsChainOfResponsability.Item("Produto 6", 600));
+            orcamento.AddItem(new TesteDesingPatternsChainOfResponsability.Item("LAPIS", 1));
+            orcamento.AddItem(new TesteDesingPatternsChainOfResponsability.Item("CANETA", 1));
 
             TesteDesingPatternsChainOfResponsability.CalculadorDesconto calculadorDesconto = new TesteDesingPatternsChainOfResponsability.CalculadorDesconto();
 
             TesteDesingPatternsChainOfResponsability.Desconto desconto1 = new TesteDesingPatternsChainOfResponsability.DescontoCincoItens();
             TesteDesingPatternsChainOfResponsability.Desconto desconto2 = new TesteDesingPatternsChainOfResponsability.DescontoValorMaiorQuinhentos();
             TesteDesingPatternsChainOfResponsability.Desconto semDesconto = new TesteDesingPatternsChainOfResponsability.SemDesconto();
+            TesteDesingPatternsChainOfResponsability.Desconto descontoPorVendaCasada = new TesteDesingPatternsChainOfResponsability.DescontoPorVendaCasada();
 
             desconto1.Proximo = desconto2;
-            desconto2.Proximo = semDesconto;
+
+            desconto2.Proximo = descontoPorVendaCasada;
+            descontoPorVendaCasada.Proximo = semDesconto;
 
             var valor = calculadorDesconto.Calcular(orcamento, desconto1);
 

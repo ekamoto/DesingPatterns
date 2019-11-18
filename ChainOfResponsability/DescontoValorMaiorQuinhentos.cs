@@ -6,7 +6,7 @@ namespace TesteDesingPatternsChainOfResponsability
 
         public double Calcular(Orcamento orcamento)
         {
-            if(orcamento.Valor > 500)
+            if(orcamento.Valor > 2000)
             {
                 return orcamento.Valor * 0.03;               
             }
