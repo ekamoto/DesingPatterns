@@ -18,8 +18,9 @@ namespace TesteDesingPatternsObserver
 
         private IList<AcaoAposGerarNota> acoesAposGerarNota = new List<AcaoAposGerarNota>();
 
-        public NotaFiscalObserver()
+        public NotaFiscalObserver(List<AcaoAposGerarNota> listaAcoes)
         {
+            acoesAposGerarNota = listaAcoes;
             Data = DateTime.Now;
         }
 

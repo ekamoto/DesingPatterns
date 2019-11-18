@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TesteDesingPatterns
 {
@@ -18,15 +19,15 @@ namespace TesteDesingPatterns
 
         private static void TesteDesingPatternsObserver()
         {
+            var listaAcoes = new List<TesteDesingPatternsObserver.AcaoAposGerarNota>();
+            listaAcoes.Add(new TesteDesingPatternsObserver.EnviadorDeEmail());
+            listaAcoes.Add(new TesteDesingPatternsObserver.NotaFiscalDao());
+            listaAcoes.Add(new TesteDesingPatternsObserver.EnviadorDeSms());
+            listaAcoes.Add(new TesteDesingPatternsObserver.Impressora());
+            listaAcoes.Add(new TesteDesingPatternsObserver.Multiplicador(300));
 
-            TesteDesingPatternsObserver.NotaFiscalObserver nfBuilder = new TesteDesingPatternsObserver.NotaFiscalObserver();
+            TesteDesingPatternsObserver.NotaFiscalObserver nfBuilder = new TesteDesingPatternsObserver.NotaFiscalObserver(listaAcoes);
 
-            // Adicionar as classes que precisam ser notificadas
-            nfBuilder.AdicionaAcao(new TesteDesingPatternsObserver.EnviadorDeEmail());
-            nfBuilder.AdicionaAcao(new TesteDesingPatternsObserver.NotaFiscalDao());
-            nfBuilder.AdicionaAcao(new TesteDesingPatternsObserver.EnviadorDeSms());
-            nfBuilder.AdicionaAcao(new TesteDesingPatternsObserver.Impressora());
-            
             TesteDesingPatternsObserver.ItemDaNota itemDaNotaBuilder1 = new TesteDesingPatternsObserver.ItemDaNotaObserver()
             .ComDescricao("Descrição teste 1")
             .ComValor(1200).Constroi();
