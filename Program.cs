@@ -18,6 +18,7 @@ namespace TesteDesingPatterns
             Console.ReadLine();
         }
 
+        // Lista de comportamento
         private static void TesteDesingPatternsObserver()
         {
             var listaAcoes = new List<TesteDesingPatternsObserver.AcaoAposGerarNota>();
@@ -53,6 +54,7 @@ namespace TesteDesingPatterns
 
         }
 
+        // Construir objetos complexos
         private static void TesteDesingPatternsBuilder()
         {
             TesteDesingPatternsBuilder.ItemDaNota itemDaNotaBuilder1 = new TesteDesingPatternsBuilder.ItemDaNotaBuilder()
@@ -108,6 +110,7 @@ namespace TesteDesingPatterns
             Console.WriteLine(notaFiscalBuilder2.DataDeEmissao);
         }
 
+        // Controlar transição de Status e suas ações
         private static void TesteDesingPatternsStateContaPositivaNegativa()
         {
             var conta = new TesteDesingPatternsState.ContaBancaria(300);
@@ -128,6 +131,7 @@ namespace TesteDesingPatterns
             Console.WriteLine(conta.ObterEstadoConta());
         }
 
+        // Controlar transição de Status e suas ações
         private static void TesteDesingPatternsState()
         {
             TesteDesingPatternsState.Orcamento orcamento = new TesteDesingPatternsState.Orcamento(500);
@@ -146,6 +150,7 @@ namespace TesteDesingPatterns
             Console.WriteLine(orcamento.Valor);
         }
 
+        // Abstrai uma regra de negócio que se repete em uma classe Abstrata 
         private static void TesteTemplateMethod()
         {
             Console.WriteLine("Template Method");
@@ -171,6 +176,7 @@ namespace TesteDesingPatterns
             Console.WriteLine("Fim Teste Template Method");
         }
 
+        // Encadear processamento de regras if/else if/ ...
         private static void TesteChainOfResponsability()
         {
             Console.WriteLine("Iniciando Teste Chain of Responsability");
@@ -204,6 +210,7 @@ namespace TesteDesingPatterns
             Console.WriteLine("Fim Teste Chain of Responsability");
         }
 
+        // Encapsular comportamento similares de forma genérica
         private static void TesteStrategy() {
 
             Console.WriteLine("Iniciando Teste Strategy");
@@ -219,6 +226,7 @@ namespace TesteDesingPatterns
             Console.WriteLine("Fim Teste Strategy");
         }
 
+        // Junta comportamentos relacionados para entregar um resultado final
         private static void TesteDesingPatternsDecorator() {
 
             Console.WriteLine("Iniciando Teste Decorator");
