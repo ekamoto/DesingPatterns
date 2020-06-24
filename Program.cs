@@ -18,7 +18,8 @@ namespace TesteDesingPatterns
             Console.ReadLine();
         }
 
-        // Lista de comportamento
+        // Lista de comportamento que são disparados após uma determinada ação
+        // nesse caso é o constroi nota fiscal
         private static void TesteDesingPatternsObserver()
         {
             var listaAcoes = new List<TesteDesingPatternsObserver.AcaoAposGerarNota>();
@@ -34,6 +35,8 @@ namespace TesteDesingPatterns
             .ComDescricao("Descrição teste 1")
             .ComValor(1200).Constroi();
 
+            // Depois que você constroi a nota fiscal todos os objetos de acões são notificados
+            // as ações esperam a construção do objeto
             TesteDesingPatternsObserver.NotaFiscal notaFiscal= nfBuilder.ParaEmpresa("Shindi")
             .ComCnpj("123.456.789/0001-10")
             .ComItem(itemDaNotaBuilder1)
@@ -111,6 +114,9 @@ namespace TesteDesingPatterns
         }
 
         // Controlar transição de Status e suas ações
+        // Você tem uma entidade que possui um estado inicial e seus processos,
+        // sendo que cada processo vai ser executado de uma forma diferente
+        // dependendo do seu status atual
         private static void TesteDesingPatternsStateContaPositivaNegativa()
         {
             var conta = new TesteDesingPatternsState.ContaBancaria(300);
@@ -151,6 +157,11 @@ namespace TesteDesingPatterns
         }
 
         // Abstrai uma regra de negócio que se repete em uma classe Abstrata 
+        // É um complemento do strategy onde existe um nível a mais que é uma
+        // classe abstrata que possui um método "executar" com regras internas
+        // que são iguais para um grupo específico de entidades
+        // que podem ser sobreescritas quando for criado uma classe
+        // herdada desse tipo
         private static void TesteTemplateMethod()
         {
             Console.WriteLine("Template Method");
@@ -177,6 +188,11 @@ namespace TesteDesingPatterns
         }
 
         // Encadear processamento de regras if/else if/ ...
+        // Uma alternativa para remover ifs e elses
+        // onde se tem classes encadeadas que vão executar algo
+        // dependendo de uma condição, caso não atenda a condição
+        // chama a próxima classe encadeada. Finaliza quando atende
+        // a condição de uma classe ou cai em um comportamento default
         private static void TesteChainOfResponsability()
         {
             Console.WriteLine("Iniciando Teste Chain of Responsability");
@@ -211,6 +227,11 @@ namespace TesteDesingPatterns
         }
 
         // Encapsular comportamento similares de forma genérica
+        // Implementa um dos princípios do SOLID aberto para extensão
+        // e fechado para alteração
+        // Você cria uma classe que irá executar um processo e receberá como parâmetro
+        // Interfaces ou Classes base para que possa ser passado classes
+        // herdadas que vão possuir códigos de execução diferentes
         private static void TesteStrategy() {
 
             Console.WriteLine("Iniciando Teste Strategy");
@@ -227,6 +248,9 @@ namespace TesteDesingPatterns
         }
 
         // Junta comportamentos relacionados para entregar um resultado final
+        // Caso precise executar uma série de processos que se complementam
+        // é criado um encadeamento de classes, cada um com um processo diferente 
+        // que no final se complementam para retornar um valor ou comportamento desejado
         private static void TesteDesingPatternsDecorator() {
 
             Console.WriteLine("Iniciando Teste Decorator");
