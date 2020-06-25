@@ -8,13 +8,18 @@ namespace TesteDesingPatterns
         static void Main(string[] args)
         {
             //TesteStrategy();
-            TesteChainOfResponsability();
+            //TesteChainOfResponsability();
             //TesteTemplateMethod();
             //TesteDesingPatternsDecorator();
             //TesteDesingPatternsState();
             //TesteDesingPatternsStateContaPositivaNegativa();
             //TesteDesingPatternsBuilder();
             //TesteDesingPatternsObserver();
+
+            // Outros exemplos de utilização para treinar
+            var novosTestes = new NovosExemplosUtilizacaoPatterns();
+            novosTestes.executar();
+
             Console.ReadLine();
         }
 
